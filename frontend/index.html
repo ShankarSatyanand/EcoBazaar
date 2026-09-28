@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoBazaar — Shop Better. Choose Greener.</title>
+  
+  <meta name="description" content="Shop eco-friendly, carbon-tracked products at EcoBazaar. Compare prices in INR alongside estimated kg CO2e lifecycle carbon footprint metrics." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- =========================================================================
+       1. Header & Navigation Bar
+       Order: Home -> Products -> Dashboard -> Cart -> Login -> Register
+       ========================================================================= -->
+  <header class="header">
+    <div class="container navbar">
+      <!-- Brand Logo -->
+      <a href="index.html" class="logo" aria-label="EcoBazaar Home">
+        <svg class="logo-leaf-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66l.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.75C7 7.35 5.5 8.7 4 10.5c3.5-1 7.5-1.5 13-2.5z"/>
+        </svg>
+        <div class="logo-text-box">
+          <span>EcoBazaar</span>
+          <span class="logo-tagline">Shop Better. Choose Greener.</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="pages/products.html" class="nav-link">Products</a></li>
+          <li><a href="pages/dashboard.html" class="nav-link">Dashboard</a></li>
+          <li>
+            <a href="pages/cart.html" class="nav-link nav-cart-btn" aria-label="Shopping Cart">
+              <svg class="cart-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+              <span>Cart</span>
+              <span class="cart-badge" id="cart-count">0</span>
+            </a>
+          </li>
+          <li><a href="pages/login.html" class="nav-link">Login</a></li>
+          <li><a href="pages/register.html" class="nav-link nav-register-btn">Register</a></li>
+        </ul>
+      </nav>
+
+      <!-- Mobile Hamburger Menu Button -->
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       2. Hero Section
+       ========================================================================= -->
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      
+      <!-- Hero Left: Brand Tagline & Actions -->
+      <div class="hero-content">
+        <span class="hero-tag">🌱 Shop Better. Choose Greener.</span>
+
+        <h1 class="hero-title">
+          Sustainable Shopping with <span class="highlight">Carbon Clarity</span>
+        </h1>
+
+        <p class="hero-description">
+          EcoBazaar makes conscious shopping simple and transparent. Explore everyday eco-friendly alternatives with estimated lifecycle carbon emissions in <strong>kg CO2e</strong> on every product.
+        </p>
+
+        <div class="hero-actions">
+          <a href="pages/products.html" class="btn-primary">
+            Explore Products
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </a>
+          <a href="#sustainability" class="btn-secondary">
+            How Carbon Tracking Works
+          </a>
+        </div>
+
+        <!-- Hero Feature Strip -->
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-value">📦 Eco Packaging</span>
+            <span class="stat-label">Plastic-free, recyclable materials</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">🌿 Mindful Materials</span>
+            <span class="stat-label">Bamboo, organic cotton & hemp</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">⚖️ Carbon Estimates</span>
+            <span class="stat-label">Lifecycle CO2e on each item</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Right: Featured Product Showcase Card -->
+      <div class="hero-card-container">
+        <div class="hero-feature-card">
+          <div class="hero-feature-header">
+            <span class="hero-feature-badge">🌱 Featured Eco Choice</span>
+            <span style="font-size: 0.8rem; color: var(--color-text-muted);">Personal Care</span>
+          </div>
+
+          <div class="hero-card-product">
+            <img 
+              src="https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?auto=format&fit=crop&w=240&q=80" 
+              alt="Bamboo Oral Care Kit" 
+              class="hero-product-img"
+            />
+            <div class="hero-product-info">
+              <h4>Bamboo Oral Care Kit</h4>
+              <p>Natural bamboo handle replaces conventional plastic</p>
+              <div class="hero-product-price">₹349</div>
+            </div>
+          </div>
+
+          <!-- Illustrative Comparison Graphic -->
+          <div class="carbon-comparison-box">
+            <div class="carbon-comparison-title">
+              <span>Lifecycle Carbon Estimate</span>
+              <span class="carbon-percent-badge">-78% Less CO2e</span>
+            </div>
+
+            <div class="carbon-bar-group">
+              <div class="carbon-bar-row">
+                <span class="carbon-bar-label">Plastic Brush:</span>
+                <div class="carbon-bar-outer">
+                  <div class="carbon-bar-fill standard"></div>
+                </div>
+                <span class="carbon-bar-value">1.40 kg</span>
+              </div>
+
+              <div class="carbon-bar-row">
+                <span class="carbon-bar-label">Bamboo Item:</span>
+                <div class="carbon-bar-outer">
+                  <div class="carbon-bar-fill eco"></div>
+                </div>
+                <span class="carbon-bar-value">0.15 kg</span>
+              </div>
+            </div>
+
+            <div class="hero-card-summary">
+              Estimated Savings: ~1.25 kg CO2e per unit*
+            </div>
+            <span class="carbon-disclaimer">*Illustrative estimate based on material lifecycle analysis.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       3. Sustainability Benefits Section (Crisp White Background)
+       ========================================================================= -->
+  <section class="benefits-section" id="sustainability">
+    <div class="container">
+      
+      <div class="section-header">
+        <span class="section-badge">Why Choose EcoBazaar</span>
+        <h2 class="section-title">Everyday Choices with Lower Impact</h2>
+        <p class="section-subtitle">
+          We believe mindful consumption begins with clear information, responsible materials, and plastic-free delivery.
+        </p>
+      </div>
+
+      <div class="benefits-grid">
+        <!-- Benefit 1: Real-Time Carbon Tracking -->
+        <div class="benefit-card">
+          <div class="benefit-icon-wrapper">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+          </div>
+          <h3>Lifecycle Carbon Estimates</h3>
+          <p>
+            See estimated raw-material and manufacturing emissions (kg CO2e) for each item before making a purchase.
+          </p>
+        </div>
+
+        <!-- Benefit 2: Verified Eco-Friendly Sellers -->
+        <div class="benefit-card">
+          <div class="benefit-icon-wrapper">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3>Mindful Materials</h3>
+          <p>
+            Curated essentials crafted from fast-growing bamboo, organic cotton, industrial hemp, and upcycled ocean plastics.
+          </p>
+        </div>
+
+        <!-- Benefit 3: Zero-Waste Packaging -->
+        <div class="benefit-card">
+          <div class="benefit-icon-wrapper">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+            </svg>
+          </div>
+          <h3>Plastic-Free Packaging</h3>
+          <p>
+            Orders ship using recyclable cardboard boxes, kraft paper tape, and compostable mailers to minimize single-use waste.
+          </p>
+        </div>
+
+        <!-- Benefit 4: Reforestation Offsets -->
+        <div class="benefit-card">
+          <div class="benefit-icon-wrapper">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M12 3v18m-9-9h18M6 18l12-12"></path>
+            </svg>
+          </div>
+          <h3>Emissions Offsetting</h3>
+          <p>
+            Residual freight emissions are balanced through verified tree-planting and green renewable energy initiatives.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       4. Featured Products Section (Soft Warm Cream Background)
+       ========================================================================= -->
+  <section class="products-section" id="featured-products">
+    <div class="container">
+      
+      <div class="section-header">
+        <span class="section-badge">Sustainable Catalog</span>
+        <h2 class="section-title">Featured Eco-Friendly Products</h2>
+        <p class="section-subtitle">
+          Discover verified sustainable alternatives. Compare prices in INR alongside estimated carbon footprints.
+        </p>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="filter-container">
+        <button type="button" class="filter-btn active" data-filter="all">All Products</button>
+        <button type="button" class="filter-btn" data-filter="personal-care">Personal Care</button>
+        <button type="button" class="filter-btn" data-filter="fashion">Fashion & Bags</button>
+        <button type="button" class="filter-btn" data-filter="tech">Tech & Solar</button>
+        <button type="button" class="filter-btn" data-filter="lifestyle">Home & Lifestyle</button>
+      </div>
+
+      <!-- Product Cards Container (Rendered via JavaScript) -->
+      <div class="products-grid" id="products-grid">
+        <!-- Dynamic product cards will be rendered here by main.js -->
+        <noscript>
+          <p style="text-align: center; grid-column: 1 / -1; color: var(--color-text-muted);">
+            Please enable JavaScript to view and filter our live sustainable catalog.
+          </p>
+        </noscript>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       5. Carbon Awareness Callout Banner (Forest Green Background)
+       ========================================================================= -->
+  <section class="carbon-banner" id="about">
+    <div class="container banner-content">
+      <div class="banner-text">
+        <h2 class="banner-title">Every Mindful Choice Counts</h2>
+        <p class="banner-desc">
+          By replacing conventional disposables with durable, low-impact alternatives, conscious households collectively save hundreds of kilograms of emissions each year. Start exploring low-carbon options today.
+        </p>
+      </div>
+      <div class="banner-cta-box">
+        <a href="pages/products.html" class="btn-banner">Browse All Products</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       6. Footer
+       ========================================================================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <!-- Brand Column -->
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <svg class="logo-leaf-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66l.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.75C7 7.35 5.5 8.7 4 10.5c3.5-1 7.5-1.5 13-2.5z"/>
+            </svg>
+            <div class="logo-text-box">
+              <span>EcoBazaar</span>
+              <span class="logo-tagline">Shop Better. Choose Greener.</span>
+            </div>
+          </a>
+          <p>
+            EcoBazaar is a sustainable ecommerce platform focused on transparent emissions tracking, ethical materials, and plastic-free everyday living.
+          </p>
+        </div>
+
+        <!-- Quick Links Column -->
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="pages/products.html">All Products</a></li>
+            <li><a href="pages/dashboard.html">My Dashboard</a></li>
+            <li><a href="pages/cart.html">Shopping Cart</a></li>
+          </ul>
+        </div>
+
+        <!-- Account Links Column -->
+        <div class="footer-col">
+          <h4>Customer Care</h4>
+          <ul class="footer-links">
+            <li><a href="pages/login.html">Login</a></li>
+            <li><a href="pages/register.html">Register</a></li>
+            <li><a href="#sustainability">Sustainability Standards</a></li>
+            <li><a href="#about">Eco Shipping Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter Column -->
+        <div class="footer-col">
+          <h4>Join the Movement</h4>
+          <p style="font-size: 0.85rem; color: #a4bea8; margin-bottom: 0.5rem;">
+            Subscribe for monthly zero-waste guides and sustainable product highlights.
+          </p>
+          <form class="newsletter-form" id="newsletter-form">
+            <input 
+              type="email" 
+              class="newsletter-input" 
+              id="newsletter-email" 
+              placeholder="Your email address" 
+              required 
+              aria-label="Email address for newsletter"
+            />
+            <button type="submit" class="btn-newsletter">Subscribe</button>
+          </form>
+          <div class="newsletter-status" id="newsletter-status"></div>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 EcoBazaar. All rights reserved. Shop Better. Choose Greener.
+        </div>
+        <div class="footer-bottom-links">
+          <a href="#home">Back to Top ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       7. Interactive Toast Notification (Added to Cart Feedback)
+       ========================================================================= -->
+  <div class="toast-notification" id="toast-notification" role="status" aria-live="polite">
+    <svg class="toast-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+    </svg>
+    <div class="toast-content">
+      <h5 class="toast-title">Added to Cart!</h5>
+      <p class="toast-desc">Item successfully added.</p>
+    </div>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

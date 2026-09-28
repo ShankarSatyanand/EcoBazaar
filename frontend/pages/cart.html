@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shopping Cart & Carbon Impact — EcoBazaar</title>
+  <meta name="description" content="Review your sustainable order, adjust item quantities, and inspect your cart's cumulative carbon footprint in kg CO2e." />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <!-- =========================================================================
+       1. Header & Navigation Bar
+       Order: Home -> Products -> Dashboard -> Cart -> Login -> Register
+       ========================================================================= -->
+  <header class="header">
+    <div class="container navbar">
+      <!-- Brand Logo -->
+      <a href="../index.html" class="logo" aria-label="EcoBazaar Home">
+        <svg class="logo-leaf-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66l.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.75C7 7.35 5.5 8.7 4 10.5c3.5-1 7.5-1.5 13-2.5z"/>
+        </svg>
+        <div class="logo-text-box">
+          <span>EcoBazaar</span>
+          <span class="logo-tagline">Shop Better. Choose Greener.</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../index.html" class="nav-link">Home</a></li>
+          <li><a href="products.html" class="nav-link">Products</a></li>
+          <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+          <li>
+            <a href="cart.html" class="nav-link nav-cart-btn active" aria-label="Shopping Cart">
+              <svg class="cart-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+              <span>Cart</span>
+              <span class="cart-badge" id="cart-count">0</span>
+            </a>
+          </li>
+          <li><a href="login.html" class="nav-link">Login</a></li>
+          <li><a href="register.html" class="nav-link nav-register-btn">Register</a></li>
+        </ul>
+      </nav>
+
+      <!-- Mobile Hamburger Menu Button -->
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       2. Page Header / Breadcrumbs
+       ========================================================================= -->
+  <section class="page-header">
+    <div class="container page-header-content">
+      <div class="breadcrumbs">
+        <a href="../index.html">Home</a>
+        <span class="separator">/</span>
+        <span>Shopping Cart</span>
+      </div>
+      <h1 class="page-title">Your Cart & Estimated Carbon Footprint</h1>
+      <p class="page-subtitle">
+        Review selected sustainable items, modify quantities, and calculate your total cart emissions in kg CO2e.
+      </p>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       3. Cart Section (Dynamic rendering via main.js)
+       ========================================================================= -->
+  <main class="container cart-section">
+    <div class="cart-grid">
+      <!-- Left Column: Item list / Table -->
+      <div id="cart-items-container">
+        <!-- Injected by main.js -->
+        <p style="text-align: center; color: var(--color-text-muted); padding: 3rem 0;">Loading your cart items...</p>
+      </div>
+
+      <!-- Right Column: Order & Carbon Summary -->
+      <div id="cart-summary-container">
+        <!-- Injected by main.js -->
+      </div>
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       4. Simulated Checkout Modal
+       ========================================================================= -->
+  <div class="modal-overlay" id="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <div class="modal-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M20 6L9 17l-5-5"></path>
+        </svg>
+      </div>
+      <h3 class="modal-title" id="modal-title">Order Placed Successfully!</h3>
+      <p class="modal-desc">
+        Thank you for choosing sustainable living! Your order has been placed with 
+        <strong>100% plastic-free packaging</strong> and verified freight offsets.
+      </p>
+
+      <div style="background-color: var(--color-cream-subtle); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 1rem; margin-bottom: 1.25rem; text-align: left; font-size: 0.85rem;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem;">
+          <span style="color: var(--color-text-muted);">Order Reference:</span>
+          <strong id="modal-order-number">#EB-2026-8942</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem;">
+          <span style="color: var(--color-text-muted);">Database Order ID:</span>
+          <strong id="modal-order-id">#1</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem;">
+          <span style="color: var(--color-text-muted);">Total Amount:</span>
+          <strong id="modal-order-amount">₹0</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem;">
+          <span style="color: var(--color-text-muted);">Shipping To:</span>
+          <span id="modal-order-address" style="font-weight: 600; text-align: right; max-width: 200px; word-break: break-word;">-</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem;">
+          <span style="color: var(--color-text-muted);">Delivery Method:</span>
+          <span style="color: var(--color-leaf); font-weight: 700;">Plastic-Free Corrugated Mailer</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem;">
+          <span style="color: var(--color-text-muted);">Emissions Saved:</span>
+          <span id="modal-order-carbon" style="color: var(--color-leaf); font-weight: 700;">Verified Green Offset 🌳</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding-top: 0.35rem; border-top: 1px dashed var(--color-border); font-size: 0.8rem;">
+          <span style="color: var(--color-text-muted);">Payment Mode:</span>
+          <span style="color: var(--color-text-muted);">Demo Simulated Card (No Charge)</span>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+        <button type="button" class="btn-primary" onclick="closeCheckoutModal(true)" style="justify-content: center;">
+          View in My Dashboard
+        </button>
+        <button type="button" class="btn-secondary" onclick="closeCheckoutModal(false)" style="justify-content: center;">
+          Continue Shopping
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       5. Footer
+       ========================================================================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo">
+            <svg class="logo-leaf-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66l.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.75C7 7.35 5.5 8.7 4 10.5c3.5-1 7.5-1.5 13-2.5z"/>
+            </svg>
+            <div class="logo-text-box">
+              <span>EcoBazaar</span>
+              <span class="logo-tagline">Shop Better. Choose Greener.</span>
+            </div>
+          </a>
+          <p>
+            EcoBazaar is a sustainable ecommerce platform focused on transparent emissions tracking, ethical materials, and plastic-free everyday living.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="products.html">All Products</a></li>
+            <li><a href="dashboard.html">My Dashboard</a></li>
+            <li><a href="cart.html">Shopping Cart</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Customer Care</h4>
+          <ul class="footer-links">
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="../index.html#sustainability">Sustainability Standards</a></li>
+            <li><a href="../index.html#about">Eco Shipping Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Join the Movement</h4>
+          <p style="font-size: 0.85rem; color: #a4bea8; margin-bottom: 0.5rem;">
+            Subscribe for monthly zero-waste guides and sustainable product highlights.
+          </p>
+          <form class="newsletter-form" id="newsletter-form">
+            <input 
+              type="email" 
+              class="newsletter-input" 
+              id="newsletter-email" 
+              placeholder="Your email address" 
+              required 
+              aria-label="Email address for newsletter"
+            />
+            <button type="submit" class="btn-newsletter">Subscribe</button>
+          </form>
+          <div class="newsletter-status" id="newsletter-status"></div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 EcoBazaar. All rights reserved. Shop Better. Choose Greener.
+        </div>
+        <div class="footer-bottom-links">
+          <a href="../index.html">Back to Top ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Feedback Container -->
+  <div class="toast-notification" id="toast-notification" role="status" aria-live="polite">
+    <svg class="toast-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+    </svg>
+    <div class="toast-content">
+      <h5 class="toast-title">Notification</h5>
+      <p class="toast-desc">Message content</p>
+    </div>
+  </div>
+
+  <script src="../js/api.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
